@@ -1,6 +1,6 @@
 namespace Subjects {
     export class Subject {
-      public teacher: Teacher | null = null;
+      protected teacher: Teacher | null = null;
   
       public setTeacher(teacher: Teacher): void {
         this.teacher = teacher;
