@@ -34,14 +34,17 @@ const director1: Directors = {
 console.log(teacher3);
 console.log(director1);
 
-// Define the function printTeacher
-function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName}. ${lastName}`;
-}
+// Define the function type interface
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-const myFunction: printTeacherFunction = printTeacher;
+// Define the function printTeacher using destructuring
+function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
+  return `${firstName.charAt(0)}. ${lastName}`;
+}
 
-console.log(printTeacher("John", "Doe"));
+// Example usage
+const myFunction: printTeacherFunction = (firstName, lastName) => printTeacher({ firstName, lastName });
+
+console.log(myFunction("John", "Doe"));
