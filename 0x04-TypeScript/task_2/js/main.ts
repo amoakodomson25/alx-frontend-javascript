@@ -64,7 +64,12 @@ function executeWork(employee: Teacher | Director): string {
 type Subjects = 'Math' | 'History';
 
 // teachClass function with explicit parameter type
-function teachClass(todayClass: Subjects): string {
-  return `Teaching ${todayClass}`;
+function teachClass(todayClass:Subjects): string {
+  if (todayClass === 'Math') {
+    return 'Teaching Math';
+  }
+  if (todayClass === 'History') {
+    return 'Teaching History';
+  }
 }
 console.log(teachClass('Math'));
