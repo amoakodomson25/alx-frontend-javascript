@@ -53,3 +53,21 @@ function createEmployee(salary: number | string): Teacher | Director {
 console.log(createEmployee(200));     // Teacher instance
 console.log(createEmployee(1000));    // Director instance
 console.log(createEmployee('$500'));  // Director instance
+
+
+// Type guard: checks if employee is Director
+function isDirector(employee: Teacher | Director): employee is Director {
+  return employee instanceof Director;
+}
+
+// executeWork function
+function executeWork(employee: Teacher | Director): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  } else {
+    return employee.workTeacherTasks();
+  }
+}
+// Example usage
+console.log(executeWork(createEmployee(200)));   // Getting to work
+console.log(executeWork(createEmployee(1000)));  // Getting to director tasks F
