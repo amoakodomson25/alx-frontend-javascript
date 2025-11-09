@@ -40,23 +40,15 @@ class Teacher implements TeacherInterface {
 
 // createEmployee function
 function createEmployee(salary: number | string): Teacher | Director {
-  // Convert string salary to number if needed
   if (typeof salary === 'string') {
-    salary = parseInt(salary.replace(/\D/g, ''), 10); // remove non-numeric characters
+    salary = parseInt(salary.replace(/\D/g, ''), 10);
   }
 
   if (salary < 500) return new Teacher();
   return new Director();
 }
 
-// Example usage
-console.log(createEmployee(200));     // Teacher instance
-console.log(createEmployee(1000));    // Director instance
-console.log(createEmployee('$500'));  // Director instance
-
-
-// Type guard: checks if employee is Director
-function isDirector(employee: Teacher | Director): employee is Director {
+export function isDirector(employee: Teacher | Director): employee is Director {
   return employee instanceof Director;
 }
 
@@ -68,6 +60,15 @@ function executeWork(employee: Teacher | Director): string {
     return employee.workTeacherTasks();
   }
 }
-// Example usage
-console.log(executeWork(createEmployee(200)));   // Getting to work
-console.log(executeWork(createEmployee(1000)));  // Getting to director tasks F
+
+type Subjects = 'Math' | 'History';
+
+// teachClass function
+function teachClass(todayClass: Subjects): string {
+  if (todayClass === 'Math') {
+    return 'Teaching Math';
+  } else if (todayClass === 'History') {
+    return 'Teaching History';
+  }
+}
+
