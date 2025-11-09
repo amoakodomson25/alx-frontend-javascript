@@ -65,11 +65,6 @@ type Subjects = 'Math' | 'History';
 
 // teachClass function with explicit parameter type
 function teachClass(todayClass: Subjects): string {
-  if (todayClass === 'Math') {
-    return 'Teaching Math';
-  }
-  if (todayClass === 'History') {
-    return 'Teaching History';
-  }
+  return `Teaching ${todayClass}`;
 }
 console.log(teachClass('Math'));
