@@ -39,15 +39,17 @@ class Teacher implements TeacherInterface {
 }
 
 // createEmployee function
-function createEmployee(salary: number | string): string {
-  if (typeof salary === 'number' && salary < 500) {
-    return 'Teacher';
-  } else {
-    return 'Director';
+function createEmployee(salary: number | string): Teacher | Director {
+  // Convert string salary to number if needed
+  if (typeof salary === 'string') {
+    salary = parseInt(salary.replace(/\D/g, ''), 10); // remove non-numeric characters
   }
+
+  if (salary < 500) return new Teacher();
+  return new Director();
 }
 
 // Example usage
-console.log(createEmployee(200));    // Teacher
-console.log(createEmployee(1000));   // Director
-console.log(createEmployee('$500')); // Director
+console.log(createEmployee(200));     // Teacher instance
+console.log(createEmployee(1000));    // Director instance
+console.log(createEmployee('$500'));  // Director instance
