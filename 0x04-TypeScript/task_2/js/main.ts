@@ -63,12 +63,12 @@ function executeWork(employee: Teacher | Director): string {
 
 type Subjects = 'Math' | 'History';
 
-// teachClass function
+// teachClass function with explicit parameter type
 function teachClass(todayClass: Subjects): string {
   if (todayClass === 'Math') {
     return 'Teaching Math';
-  } else if (todayClass === 'History') {
+  }
+  if (todayClass === 'History') {
     return 'Teaching History';
   }
 }
-
