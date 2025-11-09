@@ -8,7 +8,6 @@ interface Teacher {
   [key: string]: any;
 }
 
-// Example usage
 const teacher3: Teacher = {
   firstName: "John",
   fullTimeEmployee: false,
@@ -22,7 +21,6 @@ interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-// Example usage
 const director1: Directors = {
   firstName: "John",
   lastName: "Doe",
@@ -33,6 +31,7 @@ const director1: Directors = {
 
 console.log(teacher3);
 console.log(director1);
+
 
 // Define the function type interface
 interface printTeacherFunction {
@@ -49,6 +48,7 @@ function printTeacher({
 }): string {
   return `${firstName}. ${lastName}`;
 }
+
 
 // Example usage
 const myFunction: printTeacherFunction = (firstName, lastName) =>
@@ -87,3 +87,4 @@ class StudentClass {
 const student = new StudentClass('John', 'Doe');
 console.log(student.displayName());      // Output: John
 console.log(student.workOnHomework());   // Output: Currently working
+
