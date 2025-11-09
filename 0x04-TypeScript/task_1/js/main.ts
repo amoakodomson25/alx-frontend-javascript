@@ -40,43 +40,45 @@ interface printTeacherFunction {
 }
 
 // Define the function printTeacher using destructuring
-function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
+function printTeacher({
+  firstName,
+  lastName,
+}: {
+  firstName: string;
+  lastName: string;
+}): string {
   return `${firstName}. ${lastName}`;
 }
 
 // Example usage
-const myFunction: printTeacherFunction = (firstName, lastName) => printTeacher({ firstName, lastName });
+const myFunction: printTeacherFunction = (firstName, lastName) =>
+  printTeacher({ firstName, lastName });
 
 console.log(myFunction("John", "Doe"));
 
-
-
-
-
+// Interface describing the class structure
 interface StudentClassInterface {
   workOnHomework(): string;
   displayName(): string;
 }
-
 // Interface describing the class constructor
 interface StudentConstructor {
   new (firstName: string, lastName: string): StudentClassInterface;
 }
 
-// Implement the class
-class StudentClass implements StudentClassInterface {
-  constructor(private firstName: string, private lastName: string) {}
+// Assign the class to a variable using the constructor interface
+const StudentClass: StudentConstructor = class {
+  constructor(private firstName: string) {}
 
   workOnHomework(): string {
-    return 'Currently working';
+    return "Currently working";
   }
 
   displayName(): string {
     return this.firstName;
   }
-}
-
+};
 // Example usage
-const student = new StudentClass('John', 'Doe');
-console.log(student.displayName()); // Output: John
-console.log(student.workOnHomework()); // Output: Currently working
+const student = new StudentClass("John", "Doe");
+console.log(student.displayName());
+console.log(student.workOnHomework());
