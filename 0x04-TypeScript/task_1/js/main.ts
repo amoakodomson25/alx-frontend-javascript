@@ -41,7 +41,7 @@ interface printTeacherFunction {
 
 // Define the function printTeacher using destructuring
 function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
-  return `${firstName.charAt(0)}. ${lastName}`;
+  return `${firstName}. ${lastName}`;
 }
 
 // Example usage
