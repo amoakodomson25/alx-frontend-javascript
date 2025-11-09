@@ -56,29 +56,34 @@ const myFunction: printTeacherFunction = (firstName, lastName) =>
 
 console.log(myFunction("John", "Doe"));
 
-// Interface describing the class structure
-interface StudentClassInterface {
-  workOnHomework(): string;
-  displayName(): string;
-}
-// Interface describing the class constructor
+/// Interface describing the class constructor
 interface StudentConstructor {
-  new (firstName: string, lastName: string): StudentClassInterface;
+  new (firstName: string, lastName: string): {
+    workOnHomework(): string;
+    displayName(): string;
+  };
 }
 
-// Assign the class to a variable using the constructor interface
-const StudentClass: StudentConstructor = class {
-  constructor(private firstName: string) {}
+// Implement the class
+class StudentClass {
+  private firstName: string;
+  private lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
   workOnHomework(): string {
-    return "Currently working";
+    return 'Currently working';
   }
 
   displayName(): string {
     return this.firstName;
   }
-};
+}
+
 // Example usage
-const student = new StudentClass("John", "Doe");
-console.log(student.displayName());
-console.log(student.workOnHomework());
+const student = new StudentClass('John', 'Doe');
+console.log(student.displayName());      // Output: John
+console.log(student.workOnHomework());   // Output: Currently working
