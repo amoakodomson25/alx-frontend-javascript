@@ -72,3 +72,4 @@ function teachClass(todayClass: Subjects): string {
     return 'Teaching History';
   }
 }
+console.log(teachClass('Math'));
